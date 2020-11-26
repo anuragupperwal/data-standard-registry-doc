@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import DocContent from './DocContent';
 import DocSearch from './DocSearch';
+import Footer from '../Footer/Footer';
 
 import './DocPage.scss';
 
@@ -39,6 +40,7 @@ function DocPage() {
             </div>   
             <div className="right-panel">
                 <DocContent StandardJSON={StandardJSON}/>
+                <Footer/>
             </div>
             
             

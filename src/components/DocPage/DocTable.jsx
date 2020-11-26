@@ -9,18 +9,22 @@ function DocTable(props) {
     function parseMessageRows(fields) {
         let res = []
        fields.forEach((f, idx) => {
+           console.log(f)
            let typeLink = f.type
            let repeated = ''
            if(f.type[0] === f.type[0].toUpperCase()) {
-               typeLink = <a href={"#" + f.fullType}>{f.type}</a>
+               typeLink = <a href={"#" + f.longType}>{f.type}</a>
            }
            if(f.label === 'repeated') {
-               repeated = '[ ] '
+               repeated = 'Many'
+           } else {
+               repeated = 'One'
            }
            res.push(
                <tr key={idx}>
                     <td className="field-name">{f.name}</td>
-                    <td>{repeated}{typeLink}</td>
+                    <td>{typeLink}</td>
+                    <td>{repeated}</td>
                     <td>{f.description}</td>
                 </tr>
            )
@@ -40,6 +44,7 @@ function DocTable(props) {
                         <tr>
                         <th scope="col" width="10%">Field Name</th>
                         <th scope="col" width="20%">Type</th>
+                        <th scope="col" width="10%">Cardinality</th>
                         <th scope="col">Description</th>
                         </tr>
                     </thead>
